@@ -1,11 +1,12 @@
 import { LoginComponent } from './auth/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import path from 'path';
 
 const routes: Routes = [
-{path: '', redirectTo: '/login', pathMatch: 'full'},
-{ path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'livros', loadChildren: () => import('./livro/livro.module').then(m => m.LivroModule) },
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

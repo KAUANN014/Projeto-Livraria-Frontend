@@ -13,21 +13,24 @@
         <form [formGroup]="loginForm">
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" type="email" placeholder="Digite seu email" required>
-            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">O email é obrigatório</mat-error>
-            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Informe um email válido</mat-error>
+            <input matInput formControlName="login" type="email" placeholder="Digite seu email" required>
+            <mat-error *ngIf="loginForm.get('login')?.hasError('required')">O email é obrigatório</mat-error>
+            <mat-error *ngIf="loginForm.get('login')?.hasError('login')">Informe um email válido</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Senha</mat-label>
-            <input matInput formControlName="password" type="password" placeholder="Digite sua senha" required>
-            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">A senha é obrigatória</mat-error>
+            <input matInput formControlName="senha" type="password" placeholder="Digite sua senha" required>
+            <mat-error *ngIf="loginForm.get('senha')?.hasError('required')" >A senha é obrigatória</mat-error>
+            <mat-error *ngIf="loginForm.get('senha')?.hasError('minlength')">A senha deve ter 6 caracteres</mat-error>
           </mat-form-field>
 
-          <button mat-raised-button color="primary" class="full-width login-button" type="submit">Continuar</button>
+          <button mat-raised-button color="primary" class="full-width login-button" type="button" (click)="enviarDados()">
+            Continuar
+          </button>
 
           <div class="login-options">
-            <a href="#">Esqueceu sua senha?</a>
+            <a routerLink="#">Esqueceu sua senha?</a>
           </div>
         </form>
       </mat-card-content>
