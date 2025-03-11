@@ -13,11 +13,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+  
   ],
 
   imports: [
@@ -28,7 +30,8 @@ import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/c
     MatButtonModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [
     provideClientHydration(withEventReplay()),

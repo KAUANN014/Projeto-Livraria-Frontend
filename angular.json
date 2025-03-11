@@ -109,7 +109,9 @@
               "src/styles.scss"
             ],
             "scripts": []
+
           }
+          
         }
       }
     }
