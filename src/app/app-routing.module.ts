@@ -5,9 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'livros', loadChildren: () => import('./livro/livro.module').then(m => m.LivroModule) },
-  { path: '**', redirectTo: '/login' }
+  { path: 'livro', loadChildren: () => import('./livro/livro.module').then(m => m.LivroModule) }
+  //{ path: '**', redirectTo: '/login' }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

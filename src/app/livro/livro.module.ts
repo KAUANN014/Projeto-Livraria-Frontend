@@ -10,6 +10,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '../layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,6 @@ import { MatButtonModule } from '@angular/material/button';
     CadastrarLivroComponent,
     AlterarLivroComponent,
     ListarLivroComponent
-
   ],
   imports: [
     CommonModule,
@@ -25,7 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatTableModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    LayoutModule
   ]
 })
 export class LivroModule { }

@@ -1,1 +1,8 @@
-<p>cadastrar-livro works!</p>
+<div class="modal-backdrop" *ngIf="isOpen" (click)="closeModal()"></div>
+
+<div class="modal" *ngIf="isOpen">
+  <div class="modal-content">
+    <button class="close-btn" (click)="closeModal()">X</button>
+    <ng-content></ng-content>
+  </div>
+</div>

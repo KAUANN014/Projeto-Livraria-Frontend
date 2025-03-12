@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ListarLivroComponent implements OnInit {
   displayedColumns: string[] = ['livroId', 'nome'];
-
+  modalAberto = false;
 
   livros: any[] = [];
 
@@ -33,6 +33,14 @@ export class ListarLivroComponent implements OnInit {
         console.error("Erro ao buscar livros:", erro);
       }
     );
+  }
+
+  openModal() {
+    this.modalAberto = true;
+  }
+
+  closeModal() {
+    this.modalAberto = false;
   }
 
 }

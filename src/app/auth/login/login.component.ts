@@ -32,7 +32,7 @@ export class LoginComponent {
       next: (token) => {
         console.log('Login bem-sucedido', token.message);
         localStorage.setItem('authToken', token.token);
-        this.router.navigate(['../../livro/listar-livro']);
+        this.router.navigate(['livro']);
       },
       error: (error) => {
         console.error('Erro no login', error);
