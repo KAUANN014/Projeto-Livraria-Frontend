@@ -1,8 +1,28 @@
-<div class="modal-backdrop" *ngIf="isOpen" (click)="closeModal()"></div>
+<div *ngIf="isOpen" class="modal-backdrop">
+  <div class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Cadastrar Livro</h2>
+      </div>
 
-<div class="modal" *ngIf="isOpen">
-  <div class="modal-content">
-    <button class="close-btn" (click)="closeModal()">X</button>
-    <ng-content></ng-content>
+      <form [formGroup]="livroForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label class="title">Nome do Livro</mat-label>
+          <input matInput formControlName="nome" placeholder="Digite o nome do livro" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label class="title">ID do Livro</mat-label>
+          <input matInput type="number" formControlName="autorId" placeholder="Digite o ID do autor" required />
+        </mat-form-field>
+
+        <div class="modal-actions">
+          <button mat-raised-button color="primary" (click)="fecharModal()">Cancelar</button>
+          <button mat-raised-button color="primary" type="submit" >
+            Salvar
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

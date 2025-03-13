@@ -27,7 +27,7 @@ export class ListarLivroComponent implements OnInit {
     this.livroService.getLivros().subscribe(
       (dados) => {
         this.livros = dados;
-        console.log("Dados recebidos:", dados);
+        console.log("Dados recebidos:", this.livros);
       },
       (erro) => {
         console.error("Erro ao buscar livros:", erro);
