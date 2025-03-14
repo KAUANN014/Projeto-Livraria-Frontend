@@ -91,3 +91,23 @@ td{
 th{
   color: black;
 }
+.pesquisa{
+  width: 20%;
+  border-radius: 25px;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease-in-out;
+  border-color: #dededf;
+  box-shadow: 0 0 8px rgba(25, 118, 210, 0.3);
+  color: #999;
+  font-style: italic;
+
+}
+.pesquisa :hover{
+  background-color: #e3f2fd;
+}
+@media (max-width: 600px) {
+  .filter-field {
+    max-width: 100%;
+  }
+}

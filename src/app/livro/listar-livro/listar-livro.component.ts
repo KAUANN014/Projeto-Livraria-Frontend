@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { LivroService } from '../../service/livro.service';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Livro, LivroService } from '../../service/livro.service';
 
 @Component({
   selector: 'app-listar-livro',
@@ -8,39 +10,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./listar-livro.component.scss'],
    standalone: false
 })
-export class ListarLivroComponent implements OnInit {
-  displayedColumns: string[] = ['livroId', 'nome'];
-  modalAberto = false;
+export class ListarLivroComponent {
 
-  livros: any[] = [];
+  displayedColumns: string[] = ['id', 'nome'];
+  dataSource = new MatTableDataSource<Livro>();
 
-  constructor(private livroService: LivroService, private router: Router) {}
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(private livroService: LivroService) {}
 
   ngOnInit(): void {
     this.carregarLivros();
   }
-  irParaCadastro() {
-    this.router.navigate(['../cadastrar-livro']);
-  };
 
-  carregarLivros() {
-    this.livroService.getLivros().subscribe(
-      (dados) => {
-        this.livros = dados;
-        console.log("Dados recebidos:", this.livros);
+  carregarLivros(): void {
+    this.livroService.getLivros().subscribe({
+      next: (livros) => {
+        this.dataSource.data = livros;
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       },
-      (erro) => {
-        console.error("Erro ao buscar livros:", erro);
-      }
-    );
+      error: (err) => console.error('Erro ao buscar livros:', err)
+    });
   }
 
-  openModal() {
-    this.modalAberto = true;
-  }
-
-  closeModal() {
-    this.modalAberto = false;
+  aplicarFiltro(event: Event): void {
+    const valorFiltro = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = valorFiltro.trim().toLowerCase();
   }
 
 }
+
+

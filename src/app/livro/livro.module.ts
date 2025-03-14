@@ -11,10 +11,22 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+
 import { LayoutModule } from '../layout/layout.module';
 import { MatFormField, MatFormFieldControl, MatLabel } from '@angular/material/form-field';
+
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { CardsListComponent } from './cards-list/cards-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -24,6 +36,8 @@ import { MatInputModule } from '@angular/material/input';
     CadastrarLivroComponent,
     AlterarLivroComponent,
     ListarLivroComponent,
+    DashboardComponent,
+    CardsListComponent,
 
   ],
   imports: [
@@ -37,7 +51,16 @@ import { MatInputModule } from '@angular/material/input';
     MatFormField,
     MatLabel,
    ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatListModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatPaginatorModule
+
 
   ]
 })

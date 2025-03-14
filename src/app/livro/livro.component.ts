@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { log } from 'console';
+import { Component, inject } from '@angular/core';
+import { map, Observable, shareReplay } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-livro',
@@ -9,8 +10,12 @@ import { log } from 'console';
 })
 export class LivroComponent {
 
-  constructor() {
-    console.log("Passou aqui");
-  }
+  private breakpointObserver = inject(BreakpointObserver);
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
 
 }
