@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { identity, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Autor } from '../core/Autor.model';
-
 
 export interface Livro {
   livroId?: number;
@@ -17,7 +16,6 @@ export class LivroService {
   private apiUrl = 'http://localhost:5293/api/Livro';
 
   constructor(private http: HttpClient) {}
-
 
   cadastrarLivro(livro: Livro): Observable<Livro> {
     return this.http.post<Livro>(this.apiUrl, livro);
@@ -34,6 +32,5 @@ export class LivroService {
   getAutores(): Observable<Autor[]> {
     return this.http.get<Autor[]>('http://localhost:5293/api/Autor');
   }
-  
 
 }

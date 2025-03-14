@@ -2,7 +2,6 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Livro, LivroService,  } from '../../service/livro.service';
 
-
 @Component({
   selector: 'app-cadastrar-livro',
   templateUrl: './cadastrar-livro.component.html',
