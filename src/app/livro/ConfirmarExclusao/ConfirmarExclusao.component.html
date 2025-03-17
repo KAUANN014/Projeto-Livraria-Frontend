@@ -1,0 +1,9 @@
+<h2 mat-dialog-title class="dialog-title">Excluir Livro</h2>
+<mat-dialog-content class="dialog-content">
+  <p>Tem certeza de que deseja excluir o livro <strong>{{ data.livro.nome }}</strong>?</p>
+  <p>Esta ação não pode ser desfeita.</p>
+</mat-dialog-content>
+<mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-button color="warn" (click)="confirmar()">Sim, excluir</button>
+</mat-dialog-actions>

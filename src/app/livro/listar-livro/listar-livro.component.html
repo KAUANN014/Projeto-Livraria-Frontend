@@ -2,29 +2,51 @@
   <mat-toolbar color="accent" class="toolbar">
     Lista de Livros
     <span class="spacer"></span>
-    <input matInput (keyup)="aplicarFiltro($event)" placeholder="Buscar livros" class="pesquisa">
+    <input
+      matInput
+      (keyup)="aplicarFiltro($event)"
+      placeholder="Buscar livros"
+      class="pesquisa"
+    />
+    <!-- Botões no topo direito -->
+
   </mat-toolbar>
 
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-
       <!-- ID -->
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID </th>
-        <td mat-cell *matCellDef="let livro"> {{ livro.livroId }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let livro">{{ livro.livroId }}</td>
       </ng-container>
 
       <!-- Nome -->
       <ng-container matColumnDef="nome">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
-        <td mat-cell *matCellDef="let livro"> {{ livro.nome }} </td>
+        <td mat-cell *matCellDef="let livro">{{ livro.nome }}</td>
+      </ng-container>
+
+      <!-- Ações -->
+      <ng-container matColumnDef="acoes" >
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let livro">
+          <div class="acoes-botoes">
+            <button mat-icon-button matTooltip="Editar Livro" (click)="editarLivro()" >
+              <img src="../../../assets/icons8-editar.svg" width="15" alt="Editar"/>
+            </button>
+            <button mat-icon-button matTooltip="Excluir Livro" (click)="confirmarExclusao(livro.livroId)">
+              <img src="../../../assets/icons8-lixeira.svg" width="15" alt="Excluir" />
+            </button>
+
+          </div>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
 
     <!-- Paginação -->
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" pageSize="10" showFirstLastButtons></mat-paginator>
   </div>
 </div>

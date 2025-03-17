@@ -6,8 +6,9 @@
       <mat-toolbar><span>Livraria</span></mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#"><span>Inicio</span></a>
-      <a mat-list-item href="#"><span>Adicionar livro</span></a>
-      <a mat-list-item href="#"><span> Excluir livro</span></a>
+      <a mat-list-item routerLink="/livro/cadastrar"><span>Adicionar livro</span></a>
+      <a mat-list-item><span> Excluir livro</span></a>
+      <button (click)="logout()">Sair</button>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -21,7 +22,7 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
-      <!-- <span>template-material-schematics</span> -->
+   
     </mat-toolbar>
     <app-cards-list></app-cards-list>
    <router-outlet></router-outlet>

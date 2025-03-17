@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AlterarLivroComponent {
 
+  constructor(){}
+
+  //busca o livro com o id
+
+  //da um patch no form
+
+  //salva/notifica/rotea
+
 }

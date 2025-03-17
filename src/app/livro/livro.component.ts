@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { map, Observable, shareReplay } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { AuthServiceService } from '../service/auth.service';
 
 @Component({
   selector: 'app-livro',
@@ -10,6 +11,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class LivroComponent {
 
+  constructor(private authservice: AuthServiceService) {}
+
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -17,5 +20,9 @@ export class LivroComponent {
       map(result => result.matches),
       shareReplay()
     );
+
+    logout() {
+      this.authservice.logout();
+    }
 
 }

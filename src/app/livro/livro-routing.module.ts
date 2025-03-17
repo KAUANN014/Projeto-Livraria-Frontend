@@ -13,6 +13,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'listar', pathMatch: 'full' }, // Redireciona para listar automaticamente
       { path: 'listar', component: ListarLivroComponent },
       { path: 'cadastrar', component: CadastrarLivroComponent },
+      //mandar o id aqui
       { path: 'alterar', component: AlterarLivroComponent }
     ]
   }

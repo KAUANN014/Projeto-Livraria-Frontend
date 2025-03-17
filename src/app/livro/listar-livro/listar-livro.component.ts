@@ -1,8 +1,14 @@
+import { ConfirmarExclusaoComponent } from '../ConfirmarExclusao/ConfirmarExclusao.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Livro, LivroService } from '../../service/livro.service';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { error } from 'console';
+
+
 
 @Component({
   selector: 'app-listar-livro',
@@ -12,13 +18,13 @@ import { Livro, LivroService } from '../../service/livro.service';
 })
 export class ListarLivroComponent {
 
-  displayedColumns: string[] = ['id', 'nome'];
+  displayedColumns: string[] = ['id', 'nome', 'acoes'];
   dataSource = new MatTableDataSource<Livro>();
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private livroService: LivroService) {}
+  constructor(private livroService: LivroService, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.carregarLivros();
@@ -39,6 +45,35 @@ export class ListarLivroComponent {
     const valorFiltro = (event.target as HTMLInputElement).value;
     this.dataSource.filter = valorFiltro.trim().toLowerCase();
   }
+
+  editarLivro() {
+    //mandar o id aqui na rota
+    this.router.navigate(['livro/alterar']);
+  }
+
+  confirmarExclusao(livro: Livro) {
+    const dialogRef = this.dialog.open(ConfirmarExclusaoComponent, {
+      width: '300px',
+      data: { livro }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.excluirLivro(livro);
+      }
+    });
+  }
+
+  excluirLivro(id: any) {
+    this.livroService.excluirLivro(id!).subscribe({
+      next:() =>{
+        this.carregarLivros();
+      },
+      error:(err) =>console.error("erro ao excluir", err)
+    })
+  }
+
+
 
 }
 

@@ -6,14 +6,14 @@ import { AlterarLivroComponent } from './alterar-livro/alterar-livro.component';
 import { LivroRoutingModule } from './livro-routing.module';
 import { ListarLivroComponent } from './listar-livro/listar-livro.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { ConfirmarExclusaoComponent } from './ConfirmarExclusao/ConfirmarExclusao.component';
 
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule } from '@angular/material/icon';
 
 import { LayoutModule } from '../layout/layout.module';
-import { MatFormField, MatFormFieldControl, MatLabel } from '@angular/material/form-field';
+import { MatFormField,  MatLabel } from '@angular/material/form-field';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,7 +27,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { CardsListComponent } from './cards-list/cards-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ListarLivroComponent,
     DashboardComponent,
     CardsListComponent,
-
+    ConfirmarExclusaoComponent
   ],
   imports: [
     CommonModule,
@@ -59,9 +60,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatListModule,
     MatGridListModule,
     MatMenuModule,
-    MatPaginatorModule
-
-
+    MatPaginatorModule,
+    MatTooltipModule,
+    MatDialogModule
+   
   ]
 })
 export class LivroModule { }

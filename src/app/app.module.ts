@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { DomSanitizer } from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
@@ -17,12 +17,19 @@ import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../app/core/Interceptor/interceptors';
+import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoadingComponent } from '../app/shared/loading/loading.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    LoadingComponent,
   ],
 
   imports: [
@@ -42,19 +49,23 @@ import { MatListModule } from '@angular/material/list';
     MatInputModule,
     FormsModule,
     MatLabel,
-
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch()),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     MatIconRegistry
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
-    this.matIconRegistry.addSvgIcon(
-      'email_icon',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/angular-icon-1.svg')
-    );
- }}
+export class AppModule {}
+// export class AppModule {
+//   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+//     this.matIconRegistry.addSvgIcon(
+//       'email_icon',
+//       this.domSanitizer.bypassSecurityTrustResourceUrl('assets/angular-icon-1.svg')
+//     );
+//  }}
