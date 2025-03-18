@@ -36,5 +36,8 @@ export class LivroService {
     return this.http.delete<void>(`${this.apiUrl}/${livroId}`);
   }
 
+  getLivroPorId(id: number): Observable<Livro> {
+    return this.http.get<Livro>(`${this.apiUrl}/${id}`);
+  }
 
 }

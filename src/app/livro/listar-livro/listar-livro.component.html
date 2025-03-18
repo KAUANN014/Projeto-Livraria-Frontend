@@ -31,9 +31,10 @@
         <th mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let livro">
           <div class="acoes-botoes">
-            <button mat-icon-button matTooltip="Editar Livro" (click)="editarLivro()" >
+            <button mat-icon-button matTooltip="Editar Livro" (click)="editarLivro(livro.livroId)">
               <img src="../../../assets/icons8-editar.svg" width="15" alt="Editar"/>
             </button>
+
             <button mat-icon-button matTooltip="Excluir Livro" (click)="confirmarExclusao(livro.livroId)">
               <img src="../../../assets/icons8-lixeira.svg" width="15" alt="Excluir" />
             </button>

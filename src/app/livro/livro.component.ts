@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, inject } from '@angular/core';
 import { map, Observable, shareReplay } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -11,7 +12,7 @@ import { AuthServiceService } from '../service/auth.service';
 })
 export class LivroComponent {
 
-  constructor(private authservice: AuthServiceService) {}
+  constructor(private authservice: AuthServiceService, private router: Router) {}
 
   private breakpointObserver = inject(BreakpointObserver);
 

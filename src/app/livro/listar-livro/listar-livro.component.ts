@@ -46,10 +46,10 @@ export class ListarLivroComponent {
     this.dataSource.filter = valorFiltro.trim().toLowerCase();
   }
 
-  editarLivro() {
-    //mandar o id aqui na rota
-    this.router.navigate(['livro/alterar']);
+  editarLivro(livroId: number) {
+    this.router.navigate(['/livro/alterar', livroId]); 
   }
+
 
   confirmarExclusao(livro: Livro) {
     const dialogRef = this.dialog.open(ConfirmarExclusaoComponent, {

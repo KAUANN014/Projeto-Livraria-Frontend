@@ -1,30 +1,50 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-      <mat-toolbar><span>Livraria</span></mat-toolbar>
+  <!-- Sidebar -->
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+
+    <mat-toolbar class="sidebar-header">
+      <span>📚 Livraria</span>
+    </mat-toolbar>
+
     <mat-nav-list>
-      <a mat-list-item href="#"><span>Inicio</span></a>
-      <a mat-list-item routerLink="/livro/cadastrar"><span>Adicionar livro</span></a>
-      <a mat-list-item><span> Excluir livro</span></a>
-      <button (click)="logout()">Sair</button>
+      <a mat-list-item routerLink="/" class="nav-item">
+        <mat-icon>home</mat-icon>
+        <span>Início</span>
+      </a>
+      <a mat-list-item routerLink="/livro/cadastrar" class="nav-item">
+        <mat-icon>add</mat-icon>
+        <span>Adicionar Livro</span>
+      </a>
+      <a mat-list-item class="nav-item">
+        <mat-icon>delete</mat-icon>
+        <span>Excluir Livro</span>
+      </a>
     </mat-nav-list>
+
+    <div class="logout-container">
+      <button mat-button class="logout-button" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Sair</span>
+      </button>
+    </div>
   </mat-sidenav>
+
+  <!-- Conteúdo Principal -->
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="main-toolbar">
       @if (isHandset$ | async) {
-        <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <button mat-icon-button (click)="drawer.toggle()" aria-label="Toggle sidenav">
+          <mat-icon>menu</mat-icon>
         </button>
       }
-   
     </mat-toolbar>
-    <app-cards-list></app-cards-list>
-   <router-outlet></router-outlet>
+
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

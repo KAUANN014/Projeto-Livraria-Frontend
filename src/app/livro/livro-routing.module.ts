@@ -8,13 +8,13 @@ import { LivroComponent } from './livro.component';
 const routes: Routes = [
   {
     path: '',
-    component: LivroComponent, // O livro.component.html conterá o navbar e o router-outlet
+    component: LivroComponent,
     children: [
-      { path: '', redirectTo: 'listar', pathMatch: 'full' }, // Redireciona para listar automaticamente
+      { path: '', redirectTo: 'listar', pathMatch: 'full' },
       { path: 'listar', component: ListarLivroComponent },
       { path: 'cadastrar', component: CadastrarLivroComponent },
       //mandar o id aqui
-      { path: 'alterar', component: AlterarLivroComponent }
+      { path: 'alterar/:id', component: AlterarLivroComponent }
     ]
   }
 ];

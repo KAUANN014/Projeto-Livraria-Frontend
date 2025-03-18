@@ -1,1 +1,44 @@
-<h1>Teste</h1>
+<form [formGroup]="livroForm" novalidate (ngSubmit)="atualizarLivro()">
+  <mat-card class="edit-card">
+    <mat-card-header class="card-header">
+      <mat-card-title>📖 Editar Livro</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="form-group">
+        <mat-form-field class="input-full">
+          <mat-label>Nome do Livro</mat-label>
+          <input matInput formControlName="nome" />
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="input-full">
+          <mat-label>Autor</mat-label>
+          <mat-select formControlName="autorId">
+            <mat-option *ngFor="let autor of autores" [value]="autor.autorId">
+              {{ autor.nome }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-actions class="action-buttons">
+      <button mat-raised-button color="primary" type="submit">
+        💾 Salvar Alterações
+      </button>
+      <button mat-button color="warn" (click)="rotas()">❌ Cancelar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+<div *ngIf="mensagemSucesso" class="mensagem sucesso">
+  {{ mensagemSucesso }}
+</div>
+
+<div *ngIf="mensagemErro" class="mensagem erro">
+  {{ mensagemErro }}
+</div>
+
