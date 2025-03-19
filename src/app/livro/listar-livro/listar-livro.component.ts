@@ -6,9 +6,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Livro, LivroService } from '../../service/livro.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { error } from 'console';
-
-
 
 @Component({
   selector: 'app-listar-livro',
@@ -47,7 +44,7 @@ export class ListarLivroComponent {
   }
 
   editarLivro(livroId: number) {
-    this.router.navigate(['/livro/alterar', livroId]); 
+    this.router.navigate(['/livro/alterar', livroId]);
   }
 
 
@@ -72,8 +69,6 @@ export class ListarLivroComponent {
       error:(err) =>console.error("erro ao excluir", err)
     })
   }
-
-
 
 }
 

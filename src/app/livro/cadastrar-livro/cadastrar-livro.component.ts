@@ -57,7 +57,7 @@ export class CadastrarLivroComponent implements OnInit {
         },
         error: (err) => {
           console.error('Erro ao cadastrar livro:', err);
-          this.carregando = false; 
+          this.carregando = false;
         }
       });
     } else {

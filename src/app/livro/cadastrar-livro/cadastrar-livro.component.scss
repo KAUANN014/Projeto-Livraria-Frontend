@@ -1,14 +1,19 @@
 .full-width {
   display: flex;
+  max-width: 100%;
   width: 500px;
   padding: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .shipping-card {
   min-width: 120px;
+  max-width: 100%;
   margin: 20px auto;
   padding: 20px;
 }
+
 .mat-radio-button {
   display: block;
   margin: 5px 0;
@@ -17,6 +22,8 @@
 .row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap; /* 🔹 Permite que os itens quebrem para a linha abaixo em telas menores */
+  justify-content: center;
 }
 
 .col {
@@ -24,8 +31,27 @@
   margin-right: 20px;
   display: flex;
   justify-content: center;
+  min-width: 150px; /* 🔹 Define um tamanho mínimo para evitar colunas muito estreitas */
 }
 
 .col:last-child {
   margin-right: 0;
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .col {
+    margin-right: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .full-width {
+    width: 100%;
+    padding: 5px;
+  }
 }
